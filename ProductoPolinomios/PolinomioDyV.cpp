@@ -18,9 +18,9 @@ Polinomio* PolinomioDyV::producto(Polinomio* p, Polinomio* q){
 	//Hacerlos de igual tamaño
 	int a = p->get_terminos();
 	int count = 0;
-	Polinomio* p = multiplicar(p, q, a, count);
-	cout << count << endl;
-	return p;
+	Polinomio* p2 = multiplicar(p, q, a, count);
+	cout << "Count para DyV: " << count << endl;
+	return p2;
 }
 
 
@@ -40,33 +40,47 @@ Polinomio* PolinomioDyV::multiplicar(Polinomio* p, Polinomio* q, int n, int &cou
 	if (n == 1) {
 		int v[1];
 		v[0] = p->get_monomio(0).getCoeficiente() * q->get_monomio(0).getCoeficiente();
+		count++;
 		return new Polinomio(v, 1);
 	}
 	else {
 		divide(p, q, qh, ql, ph, pl);
 		despl = pl->get_terminos() + ql->get_terminos();
 
+		count += ph->get_terminos();
+
 		s1 = suma(pl, ph);
 		s2 = suma(ql, qh);
 
-		rl = multiplicar(pl, ql, pl->get_terminos());
-		rh = multiplicar(ph, qh, ph->get_terminos());
-		rm = multiplicar(s1, s2, s1->get_terminos());
+		count += qh->get_terminos();
+		count += ph->get_terminos();
+
+		rl = multiplicar(pl, ql, pl->get_terminos(), count);
+		rh = multiplicar(ph, qh, ph->get_terminos(), count);
+		rm = multiplicar(s1, s2, s1->get_terminos(), count);
 		aux = ~(*rl);
 		sumaparcial1 = suma(rm, &aux);
 		aux = ~(*rh);
 		sumaparcial2 = suma(sumaparcial1, &aux);
+		count += rl->get_terminos();
+		count += rh->get_terminos();
+		count += rm->get_terminos();
+		count += sumaparcial1->get_terminos();
 
 		delete sumaparcial1;
 
 		sumaparcial1 = desplazar(sumaparcial2, ((n / 2)));
-
+		count += sumaparcial2->get_terminos() + n / 2;
 		delete sumaparcial2;
 
 		sumaparcial2 = desplazar(rh,despl);
 
+		count += rh->get_terminos() + despl;
+
 		resAux = suma(sumaparcial1, sumaparcial2);
+		count += sumaparcial2->get_terminos();
 		res = suma(resAux, rl);
+		count += resAux->get_terminos();
 		delete resAux;
 		delete rl;
 		delete rh; 
@@ -76,10 +90,8 @@ Polinomio* PolinomioDyV::multiplicar(Polinomio* p, Polinomio* q, int n, int &cou
 		delete ph;
 		delete ql;
 		delete qh;
-		//**
-		//delete p;
-		//delete q;
-
+	
+		count += 8;
 		return res;
 	}
 

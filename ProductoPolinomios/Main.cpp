@@ -13,11 +13,11 @@ int main(void) {
 	Polinomio *p1;
 	Polinomio *p2;
 
-	for (int i = 10; i < 20; i++) {
+	for (int i = 1; i < 10; i++) {
 		timea = time(NULL);
 		cout << "Con algoritmo clasico, tamanio " << i * 100 << ": ";
 
-		p1 = new Polinomio(a, (i ) * 100);
+		p1 = new Polinomio(a, (i) * 100);
 		p2 = new Polinomio(a, (i) * 100);
 		
 		PolinomioClasico::producto(p1, p2);
