@@ -8,16 +8,8 @@ Polinomio::Polinomio() :grado_(0), terminos_(0)
 
 
 Polinomio::Polinomio(int v[], int tam) {
-	Monomio dummy;
-
-	for (int i = 0; i < tam; i++) {
-		dummy.setCoeficiente(v[i]);
-		dummy.setExponente(i);
-		polinomio_.push_back(dummy);
-	}
-	terminos_ = tam;
-	grado_ = tam - 1;
-
+	
+	setPolinomio(v, tam);
 }
 Polinomio::~Polinomio()
 {
@@ -42,6 +34,20 @@ Polinomio Polinomio::operator~() {
 	delete v;
 	return res;
 }
+
+void Polinomio::setPolinomio(int *v , int tam){
+	Monomio dummy;
+
+	for (int i = 0; i < tam; i++) {
+		dummy.setCoeficiente(v[i]);
+		dummy.setExponente(i);
+		polinomio_.push_back(dummy);
+	}
+	terminos_ = tam;
+	grado_ = tam - 1;
+}
+
+
 ostream& operator<< (ostream& os, Polinomio& p) {
 	if (p.terminos_ >= 1)
 		os << p.polinomio_[0];

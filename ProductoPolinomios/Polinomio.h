@@ -18,7 +18,7 @@ public:
 	int get_grado();
 	int get_terminos();
 	Monomio get_monomio(int);
-
+	void setPolinomio(int[], int);
 	Polinomio operator~();
 	friend ostream& operator<< (ostream&, Polinomio&);
 	~Polinomio();

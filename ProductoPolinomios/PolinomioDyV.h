@@ -13,9 +13,9 @@ public:
 	~PolinomioDyV();
 
 private:
-	static Polinomio* multiplicar(Polinomio*, Polinomio*, int, int&);
-	static void  divide(Polinomio*, Polinomio*, Polinomio*&, Polinomio*&, Polinomio*&, Polinomio*&);
-	static Polinomio* suma(Polinomio*, Polinomio*);
-	static Polinomio* desplazar(Polinomio*, int);
+	static Polinomio multiplicar(Polinomio&, Polinomio&, int, int&);
+	static void  divide(Polinomio*, Polinomio*, Polinomio&, Polinomio&, Polinomio&, Polinomio&);
+	static Polinomio suma(Polinomio*, Polinomio*);
+	static Polinomio desplazar(Polinomio*, int);
 };
 

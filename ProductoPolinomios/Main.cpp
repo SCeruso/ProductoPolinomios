@@ -13,19 +13,21 @@ int main(void) {
 	Polinomio *p1;
 	Polinomio *p2;
 
-	for (int i = 1; i < 10; i++) {
-		timea = time(NULL);
+	for (int i = 1; i < 2; i++) {
+
+		p1 = new Polinomio(a, (i)* 10000);
+		p2 = new Polinomio(a, (i)* 10000);
+
+	/*	timea = time(NULL);
 		cout << "Con algoritmo clasico, tamanio " << i * 100 << ": ";
 
-		p1 = new Polinomio(a, (i) * 100);
-		p2 = new Polinomio(a, (i) * 100);
 		
 		PolinomioClasico::producto(p1, p2);
 		timea = time(NULL) - timea;
 	
-		cout << timea << endl;
+		cout << timea << endl;*/
 
-		cout << "Con algoritmo DyV, tamanio " << i*1000 << ": ";
+		cout << "Con algoritmo DyV, tamanio " << i*100 << ": ";
 		timea = time(NULL);
 	
 		PolinomioDyV::producto(p1, p2);
