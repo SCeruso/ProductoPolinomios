@@ -21,6 +21,6 @@ public:
 
 	Polinomio operator~();
 	friend ostream& operator<< (ostream&, Polinomio&);
-	~Polinomio();
+	virtual ~Polinomio();
 };
 

@@ -12,7 +12,7 @@ public:
 	virtual ~Solucion();
 
 	virtual void resolver();
-	virtual void mezcla(pair<Solucion*,Solucion*>);
+	virtual void mezcla(vector<Solucion*>);
 	virtual Solucion* getInstance();
 };
 

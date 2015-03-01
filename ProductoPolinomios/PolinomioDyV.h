@@ -10,7 +10,7 @@ public:
 	PolinomioDyV(int[], int);
 
 	static Polinomio* producto(Polinomio*, Polinomio*);
-	~PolinomioDyV();
+	virtual ~PolinomioDyV();
 
 private:
 	static Polinomio* multiplicar(Polinomio*, Polinomio*, int, int&);
