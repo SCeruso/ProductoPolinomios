@@ -6,54 +6,35 @@
 #include "ProductoPolinomiosS.h"
 
 int main(void) {
-	int a[5000]; //= { 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5 };
+	int a[10000]; 
 	int timea;
-
-	for (int i = 1; i < 5000; i++)
-		a[i - 1] = i;
-
-
 	Polinomio *p1;
 	Polinomio *p2;
+	Problema* problem;
+	Solucion* s;
+	Framework* f;
 
-	p1 = new Polinomio(a, 5);
-	p2 = new Polinomio(a, 5);
+	for (int i = 1; i <= 10000; i++)
+		a[i - 1] = i;
 
-	Problema* problem = new ProductoPolinomiosP(p1, p2);
-	Solucion* s = new ProductoPolinomiosS();
-	Framework* f = new Framework();
-
-	f->divideyVenceras(problem, s);
-
-	s->resolver();
-	cout << *PolinomioClasico::producto(p1, p2) << endl;
-	/*for (int i = 1; i < 2; i++) {
-		
-		p1 = new Polinomio(a, (i)* 10000);
-		p2 = new Polinomio(a, (i)* 10000); 
-		/*timea = time(NULL);
-		cout << "Con algoritmo clasico, tamanio " << i * 100 << ": ";
-
-		
-		
-		PolinomioClasico::producto(p1, p2);
-		timea = time(NULL) - timea;
-	
-		cout << timea << endl;
-		*/
-		/*cout << "Con algoritmo DyV, tamanio " << i*1000 << ": ";
+	for (int i = 1; i < 10; i++) {
+		p1 = new Polinomio(a, i * 1000);
+		p2 = new Polinomio(a, i * 1000);
+		problem = new ProductoPolinomiosP(p1, p2);
+		s = new ProductoPolinomiosS();
+		f = new Framework();
 		timea = time(NULL);
-	
-		PolinomioDyV::producto(p1, p2);
-		
-		timea = time(NULL) - timea;
+		f->divideyVenceras(problem, s);
+		cout << "Con DYV tarda: " << time(NULL) - timea << " segundos" << endl;
+		timea = time(NULL);
+		PolinomioClasico::producto(p1, p2);
+		cout << "Con Clasico tarda: " << time(NULL) - timea<< " segundos" << endl;
 
-		cout << timea << endl;
-
-		delete p1;
-		delete p2;
-	*/
 	
+		delete problem;
+		delete s;
+		delete f;
+	}	
 	system("pause");
 	
 }

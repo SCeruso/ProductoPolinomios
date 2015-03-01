@@ -30,7 +30,7 @@ Polinomio* PolinomioClasico::producto(Polinomio* p, Polinomio* q) {
 	}
 	result = new Polinomio(vec, p->get_grado() + q->get_grado() + 1);
 	delete vec;
-	cout << "Numero operaciones: " << aux << endl;
+//	cout << "Numero operaciones: " << aux << endl;
 	return result;
 }
 /*
