@@ -37,7 +37,12 @@ bool ProductoPolinomiosP::isCasoMinimo(){
 vector<Problema*> ProductoPolinomiosP::descomponer(){
 	Polinomio *pl, *ph, *ql, *qh, *s1, *s2;
 	vector<Problema*> res;
-
+	
+	if (p->get_terminos() > q->get_terminos()) 
+		igualar(q, p);
+	else if (p->get_terminos() < q->get_terminos()) 
+		igualar(p, q);
+		
 	divide(p, q, qh, ql, ph, pl);
 	s1 = suma(ph, pl);
 	s2 = suma(qh, ql);
@@ -49,6 +54,23 @@ vector<Problema*> ProductoPolinomiosP::descomponer(){
 	return res;
 }
 
+void ProductoPolinomiosP::igualar(Polinomio *p, Polinomio *q) {
+	
+	int size = std::max(p->get_terminos(), q->get_terminos());
+	int *v = new int(size);
+
+
+	for (int i = 0; i < size; i++){
+		if (i < p->get_terminos())
+			v[i] = p->get_monomio(i).getCoeficiente();
+		else
+			v[i] = 0;
+	}
+	
+	delete p;
+	p = new Polinomio(v, size);
+	delete v;		
+}
 
 Polinomio* ProductoPolinomiosP::suma(Polinomio* p, Polinomio* q){
 	int size = std::max(p->get_terminos(), q->get_terminos());
