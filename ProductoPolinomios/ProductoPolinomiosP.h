@@ -24,5 +24,6 @@ public:
 private:
 	void divide(Polinomio*, Polinomio*, Polinomio* &, Polinomio* &, Polinomio* &, Polinomio* &);
 	Polinomio* suma(Polinomio*, Polinomio*);
+	void igualar(Polinomio *p, Polinomio *q);
 };
 
