@@ -4,9 +4,9 @@
 #include "Framework.h"
 #include "ProductoPolinomiosP.h"
 #include "ProductoPolinomiosS.h"
-
+#include "MergeSortP.h"
 int main(void) {
-	int a[10000]; 
+	int a[10] = { 3, 2, 1, 5, 4, 7, 0, 22, 16, 13 };
 	int timea;
 	Polinomio *p1;
 	Polinomio *p2;
@@ -14,7 +14,12 @@ int main(void) {
 	Solucion* s;
 	Framework* f;
 
-	for (int i = 1; i <= 10000; i++)
+	problem = new MergeSortP(a, 10);
+	s = new MergeSortS();
+	f = new Framework();
+	f->divideyVenceras(problem, s);
+	s->resolver();
+	/*for (int i = 1; i <= 10000; i++)
 		a[i - 1] = i;
 
 	for (int i = 1; i < 10; i++) {
@@ -34,7 +39,7 @@ int main(void) {
 		delete problem;
 		delete s;
 		delete f;
-	}	
+	}	*/
 	system("pause");
 	
 }
