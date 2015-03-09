@@ -24,8 +24,8 @@ void ProductoPolinomiosS::mezcla(vector<Solucion*> x){
 	Polinomio* res;
 
 	aux = resta(((ProductoPolinomiosS*)x[1])->r, ((ProductoPolinomiosS*)x[0])->r, ((ProductoPolinomiosS*)x[2])->r);
-	aux2 = desplazar(((ProductoPolinomiosS*)x[0])->r, ((ProductoPolinomiosS*)x[2])->r->get_terminos() + 1);//??
-	aux3 = desplazar(aux, ((((ProductoPolinomiosS*)x[2])->r->get_terminos() + 1) / 2));//?? n / 2
+	aux2 = desplazar(((ProductoPolinomiosS*)x[0])->r, ((ProductoPolinomiosS*)x[2])->r->get_terminos() + 1);//n
+	aux3 = desplazar(aux, ((((ProductoPolinomiosS*)x[2])->r->get_terminos() + 1) / 2));// n / 2
 	res = suma(aux3, aux2, ((ProductoPolinomiosS*)x[2])->r);
 
 	delete aux;
